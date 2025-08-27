@@ -1,29 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="en-us">
   <head>
-  <style>
-  #rotate-warning {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    z-index: 9999;
-  }
-</style>
+  <meta charset="utf-8" />
+  <title>My Unity WebGL Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | LinaGirlsFYP</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* This makes Unity canvas responsive */
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
   <body>
   <script>
   function checkOrientation() {
@@ -47,7 +47,7 @@
 </div>
 
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=1280 height=720 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -58,7 +58,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">LinaGirlsFYP</div>
+        <div id="unity-build-title">E-ARKIB SISTEM PENGARKIBAN TAJUK PROJEK AKHIR TAHUN PELAJAR</div>
       </div>
     </div>
     <script>
@@ -101,8 +101,8 @@
         frameworkUrl: buildUrl + "/fy.framework.js.unityweb",
         codeUrl: buildUrl + "/fy.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "LinaGirlsFYP",
+        companyName: "azlinanm",
+        productName: "E-ARKIB SISTEM PENGARKIBAN TAJUK PROJEK AKHIR TAHUN PELAJAR",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
@@ -141,8 +141,8 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "1920px";
-        canvas.style.height = "1080px";
+        canvas.style.width = "1280px";
+        canvas.style.height = "720px";
       }
 
       loadingBar.style.display = "block";
