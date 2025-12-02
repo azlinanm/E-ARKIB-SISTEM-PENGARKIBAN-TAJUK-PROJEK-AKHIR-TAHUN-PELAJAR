@@ -127,34 +127,5 @@
       document.body.appendChild(script);
 
     </script>
-        <!-- ✨ PDF GENERATOR FOR STUDENT BOOKING ✨ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-    <script>
-        function GeneratePDFInBrowser(jsonData) {
-            var booking = JSON.parse(jsonData);
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            let y = 10;
-            doc.setFontSize(12);
-
-            doc.text("Nama Pelajar: " + booking.studentName, 10, y); y += 10;
-            doc.text("ID Pelajar: " + booking.studentID, 10, y); y += 10;
-            doc.text("Tajuk: " + booking.title, 10, y); y += 10;
-
-            doc.text("Abstrak:", 10, y);
-            let splitAbstract = doc.splitTextToSize(booking.abstractText, 180);
-            doc.text(splitAbstract, 10, y + 10);
-            y += (splitAbstract.length * 6) + 10;
-
-            doc.text("Peralatan: " + booking.tools, 10, y); y += 10;
-           //doc.text("Ulasan: " + booking.comment, 10, y); y += 10;
-           //doc.text("Status: " + booking.status, 10, y);
-
-            doc.save("TempahanTajuk.pdf");
-        }
-    </script>
-
   </body>
 </html>
