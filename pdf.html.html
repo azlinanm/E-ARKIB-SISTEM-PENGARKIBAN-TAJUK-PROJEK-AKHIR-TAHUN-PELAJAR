@@ -1,48 +1,37 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Generate PDF</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <meta charset="UTF-8">
+    <title>PDF Preview</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <button id="downloadBtn">Download PDF</button>
 
-<script>
-    function getQueryParam(name) {
-        const url = new URL(window.location.href);
-        return url.searchParams.get(name);
-    }
+    <script>
+        // Read URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const jsonData = decodeURIComponent(urlParams.get("data"));
+        const booking = JSON.parse(jsonData);
 
-    var jsonData = getQueryParam("data");
-    if (!jsonData) {
-        alert("No data received from Unity.");
-    } else {
-        var booking = JSON.parse(jsonData);
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+        document.getElementById("downloadBtn").addEventListener("click", () => {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
 
-        let y = 10;
-        doc.setFontSize(12);
+            doc.setFontSize(16);
+            doc.text("Student Booking Details", 20, 20);
 
-        doc.text("Nama Pelajar: " + booking.studentName, 10, y); y += 10;
-        doc.text("ID Pelajar: " + booking.studentID, 10, y); y += 10;
-        doc.text("Tajuk: " + booking.title, 10, y); y += 10;
+            doc.setFontSize(12);
+            doc.text(`Name: ${booking.studentName}`, 20, 40);
+            doc.text(`ID: ${booking.studentID}`, 20, 50);
+            doc.text(`Title: ${booking.title}`, 20, 60);
+            doc.text(`Abstract: ${booking.abstractText}`, 20, 70);
+            doc.text(`Tools: ${booking.tools}`, 20, 80);
+            doc.text(`Comment: ${booking.comment}`, 20, 90);
+            doc.text(`Status: ${booking.status}`, 20, 100);
 
-        doc.text("Abstrak:", 10, y);
-        let sp = doc.splitTextToSize(booking.abstractText, 180);
-        doc.text(sp, 10, y + 10);
-        y += (sp.length * 6) + 10;
-
-        doc.text("Peralatan: " + booking.tools, 10, y); y += 10;
-        doc.text("Ulasan: " + booking.comment, 10, y); y += 10;
-        doc.text("Status: " + booking.status, 10, y);
-
-        doc.save("Tempahan_Tajuk.pdf");
-
-        // Close page after download
-        setTimeout(() => window.close(), 1000);
-    }
-</script>
-
+            doc.save("Booking.pdf");
+        });
+    </script>
 </body>
 </html>
