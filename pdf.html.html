@@ -27,8 +27,6 @@
             doc.text(`Title: ${booking.title}`, 20, 60);
             doc.text(`Abstract: ${booking.abstractText}`, 20, 70);
             doc.text(`Tools: ${booking.tools}`, 20, 80);
-            doc.text(`Comment: ${booking.comment}`, 20, 90);
-            doc.text(`Status: ${booking.status}`, 20, 100);
 
             doc.save("Booking.pdf");
         });
